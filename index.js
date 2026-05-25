@@ -225,132 +225,80 @@ app.post('/api/submit-results', async (req, res) => {
       from: `Thomas Addison <${FROM_EMAIL}>`,
       to: ADVISOR_EMAIL,
       subject: `New ExitVault Lead — ${fullName} — ${quadrantName}`,
-      html: `
-        <!DOCTYPE html>
-        <html>
-        <body style="margin:0;padding:0;background:#f8f4ee;font-family:Georgia,serif;">
-          <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8f4ee;padding:40px 20px;">
-            <tr>
-              <td align="center">
-                <table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #d4cfc8;">
-                  
-                  <tr>
-                    <td style="background:linear-gradient(90deg,#8a6f33,#c9a84c,#e2c47a,#c9a84c,#8a6f33);height:3px;"></td>
-                  </tr>
+      html: `<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#ffffff;font-family:Arial,sans-serif;color:#222222;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;padding:0;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #dddddd;margin:20px auto;">
 
-                  <!-- Header -->
-                  <tr>
-                    <td style="background:#0f1e35;padding:24px 40px;">
-                      <p style="margin:0;font-family:Georgia,serif;font-size:22px;font-weight:600;color:#f8f4ee;">
-                        Exit<span style="color:#c9a84c;">Vault</span>
-                        <span style="font-family:Arial,sans-serif;font-size:11px;font-weight:300;letter-spacing:0.2em;text-transform:uppercase;color:#8a8580;margin-left:12px;">New Lead</span>
-                      </p>
-                    </td>
-                  </tr>
+  <tr><td style="background:#1b2a4a;padding:20px 32px;">
+    <p style="margin:0;font-family:Arial,sans-serif;font-size:20px;font-weight:700;color:#ffffff;">
+      Exit<span style="color:#c9a84c;">Vault</span>
+      <span style="font-size:12px;font-weight:400;color:#aaaaaa;margin-left:12px;">New Lead</span>
+    </p>
+  </td></tr>
 
-                  <!-- Quadrant banner -->
-                  <tr>
-                    <td style="background:#1b2a4a;padding:20px 40px;border-bottom:1px solid rgba(201,168,76,0.2);">
-                      <p style="margin:0;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:#8a6f33;">Quadrant Placement</p>
-                      <p style="margin:6px 0 0;font-family:Georgia,serif;font-size:26px;font-weight:300;color:#c9a84c;">${quadrantName}</p>
-                    </td>
-                  </tr>
+  <tr><td style="background:#c9a84c;padding:12px 32px;">
+    <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#000000;">Quadrant: ${quadrantName}</p>
+  </td></tr>
 
-                  <!-- Contact info -->
-                  <tr>
-                    <td style="padding:28px 40px;border-bottom:1px solid #ede8df;">
-                      <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#8a8580;">Contact Information</p>
-                      <p style="margin:12px 0 4px;font-family:Georgia,serif;font-size:20px;color:#1a1a1a;">${fullName}</p>
-                      <p style="margin:4px 0;font-family:Arial,sans-serif;font-size:13px;color:#444;">
-                        <a href="mailto:${email}" style="color:#1b2a4a;">${email}</a>
-                      </p>
-                      <p style="margin:4px 0;font-family:Arial,sans-serif;font-size:13px;color:#444;">${phoneDisplay}</p>
-                    </td>
-                  </tr>
+  <tr><td style="padding:24px 32px;border-bottom:1px solid #eeeeee;">
+    <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#999999;">Contact</p>
+    <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:18px;font-weight:700;color:#222222;">${fullName}</p>
+    <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:14px;color:#1b2a4a;">${email}</p>
+    <p style="margin:0;font-family:Arial,sans-serif;font-size:14px;color:#555555;">${phoneDisplay}</p>
+  </td></tr>
 
-                  <!-- Scores -->
-                  <tr>
-                    <td style="padding:28px 40px;border-bottom:1px solid #ede8df;">
-                      <p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#8a8580;">Assessment Scores</p>
-                      <table width="100%" cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td width="48%" style="background:#f8f4ee;border:1px solid #d4cfc8;padding:16px;text-align:center;">
-                            <p style="margin:0;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8a8580;">Personal Readiness</p>
-                            <p style="margin:8px 0 0;font-family:Georgia,serif;font-size:32px;font-weight:300;color:#1b2a4a;">${personalScore}<span style="font-size:14px;color:#8a8580;"> / 15</span></p>
-                          </td>
-                          <td width="4%"></td>
-                          <td width="48%" style="background:#f8f4ee;border:1px solid #d4cfc8;padding:16px;text-align:center;">
-                            <p style="margin:0;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8a8580;">Financial Readiness</p>
-                            <p style="margin:8px 0 0;font-family:Georgia,serif;font-size:32px;font-weight:300;color:#1b2a4a;">${financialScore}<span style="font-size:14px;color:#8a8580;"> / 15</span></p>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
+  <tr><td style="padding:24px 32px;border-bottom:1px solid #eeeeee;">
+    <p style="margin:0 0 12px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#999999;">Scores</p>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="48%" style="background:#f5f5f5;border:1px solid #dddddd;padding:12px;text-align:center;">
+          <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;color:#999999;text-transform:uppercase;letter-spacing:0.1em;">Personal Readiness</p>
+          <p style="margin:0;font-family:Arial,sans-serif;font-size:28px;font-weight:700;color:#1b2a4a;">${personalScore}<span style="font-size:14px;color:#999999;">/15</span></p>
+        </td>
+        <td width="4%"></td>
+        <td width="48%" style="background:#f5f5f5;border:1px solid #dddddd;padding:12px;text-align:center;">
+          <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;color:#999999;text-transform:uppercase;letter-spacing:0.1em;">Financial Readiness</p>
+          <p style="margin:0;font-family:Arial,sans-serif;font-size:28px;font-weight:700;color:#1b2a4a;">${financialScore}<span style="font-size:14px;color:#999999;">/15</span></p>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
 
-                  <!-- Situational answers -->
-                  <tr>
-                    <td style="padding:28px 40px;border-bottom:1px solid #ede8df;">
-                      <p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#8a8580;">Situational Answers</p>
-                      ${[
-                        ['Current Situation', sit[0]],
-                        ['90-Day Goal', sit[1]],
-                        ['Primary Obstacle', sit[2]],
-                        ['Preferred Way to Work', sit[3]]
-                      ].map(([label, answer]) => `
-                        <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8a6f33;">${label}</p>
-                        <p style="margin:0 0 16px;font-family:Georgia,serif;font-size:14px;color:#333;line-height:1.5;">${answer || 'Not answered'}</p>
-                      `).join('')}
-                      ${openText ? `
-                        <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8a6f33;">Additional Notes</p>
-                        <p style="margin:0;font-family:Georgia,serif;font-size:14px;color:#333;line-height:1.5;">${openText}</p>
-                      ` : ''}
-                    </td>
-                  </tr>
+  <tr><td style="padding:24px 32px;border-bottom:1px solid #eeeeee;">
+    <p style="margin:0 0 12px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#999999;">Situational Answers</p>
+    ${[['Current Situation',sit[0]],['90-Day Goal',sit[1]],['Primary Obstacle',sit[2]],['Preferred Way to Work',sit[3]]].map(([label,answer])=>`
+    <p style="margin:0 0 2px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#c9a84c;">${label}</p>
+    <p style="margin:0 0 14px;font-family:Arial,sans-serif;font-size:14px;color:#333333;">${answer||'Not answered'}</p>
+    `).join('')}
+    ${openText?`<p style="margin:0 0 2px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:#c9a84c;">Additional Notes</p><p style="margin:0;font-family:Arial,sans-serif;font-size:14px;color:#333333;">${openText}</p>`:''}
+  </td></tr>
 
-                  <!-- CTA -->
-                  <tr>
-                    <td style="padding:28px 40px;text-align:center;">
-                      <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                        <tr>
-                          <td align="center" bgcolor="#c9a84c" style="background-color:#c9a84c;padding:18px 24px;">
-                            <a href="https://calendar.app.google/cYv64HLDdnt95R3W6"
-                               target="_blank"
-                               style="font-family:Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#000000;text-decoration:underline;display:block;">
-                              &rarr; &nbsp; Schedule Follow-Up Call &nbsp; &larr;
-                            </a>
-                          </td>
-                        </tr>
-                      </table>
-                      <p style="margin:12px 0 0;font-family:Arial,sans-serif;font-size:12px;color:#ffffff;text-align:center;">
-                        Or use this link:<br>
-                        <a href="https://calendar.app.google/cYv64HLDdnt95R3W6"
-                           target="_blank"
-                           style="color:#c9a84c;font-weight:bold;word-break:break-all;text-decoration:underline;">
-                          https://calendar.app.google/cYv64HLDdnt95R3W6
-                        </a>
-                      </p>
-                      <p style="margin:16px 0 0;font-family:Arial,sans-serif;font-size:11px;color:#8a8580;">
-                        Reply directly to this email to reach ${firstName} at ${email}
-                      </p>
-                    </td>
-                  </tr>
+  <tr><td style="padding:24px 32px;text-align:center;background:#f9f9f9;">
+    <p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:14px;color:#333333;">Schedule your follow-up call with ${firstName}:</p>
+    <p style="margin:0 0 8px;font-size:16px;font-weight:700;">
+      <a href="https://calendar.app.google/cYv64HLDdnt95R3W6" 
+         style="color:#1b2a4a;text-decoration:underline;font-family:Arial,sans-serif;">
+        Click here to schedule
+      </a>
+    </p>
+    <p style="margin:0;font-family:Arial,sans-serif;font-size:12px;color:#777777;">
+      Or reply to this email — it goes directly to ${email}
+    </p>
+  </td></tr>
 
-                  <tr>
-                    <td style="background:#0f1e35;padding:16px 40px;text-align:center;">
-                      <p style="margin:0;font-family:Arial,sans-serif;font-size:10px;color:#8a8580;letter-spacing:0.1em;">
-                        ExitVault &nbsp;·&nbsp; exitvault.addisonsa.com &nbsp;·&nbsp; Addison Advisory
-                      </p>
-                    </td>
-                  </tr>
+  <tr><td style="padding:16px 32px;background:#f5f5f5;border-top:1px solid #dddddd;text-align:center;">
+    <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;color:#999999;">
+      ExitVault &nbsp;·&nbsp; Addison Advisory &nbsp;·&nbsp; exitvault.addisonsa.com
+    </p>
+  </td></tr>
 
-                </table>
-              </td>
-            </tr>
-          </table>
-        </body>
-        </html>
-      `
+</table>
+</td></tr>
+</table>
+</body></html>`
     });
 
     // ── EMAIL 2: Results to owner ──
@@ -366,139 +314,87 @@ app.post('/api/submit-results', async (req, res) => {
       to: email,
       replyTo: ADVISOR_EMAIL,
       subject: `Your ExitVault Results — ${quadrantName}`,
-      html: `
-        <!DOCTYPE html>
-        <html>
-        <body style="margin:0;padding:0;background:#0f1e35;font-family:Georgia,serif;">
-          <table width="100%" cellpadding="0" cellspacing="0" style="background:#0f1e35;padding:40px 20px;">
-            <tr>
-              <td align="center">
-                <table width="560" cellpadding="0" cellspacing="0" style="background:#1b2a4a;border:1px solid rgba(201,168,76,0.2);">
+      html: `<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#ffffff;font-family:Arial,sans-serif;color:#222222;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#ffffff;padding:0;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="background:#ffffff;border:1px solid #dddddd;margin:20px auto;">
 
-                  <tr>
-                    <td style="background:linear-gradient(90deg,#8a6f33,#c9a84c,#e2c47a,#c9a84c,#8a6f33);height:3px;"></td>
-                  </tr>
+  <tr><td style="background:#1b2a4a;padding:20px 32px;">
+    <p style="margin:0;font-family:Arial,sans-serif;font-size:20px;font-weight:700;color:#ffffff;">
+      Exit<span style="color:#c9a84c;">Vault</span>
+    </p>
+    <p style="margin:4px 0 0;font-family:Arial,sans-serif;font-size:11px;color:#aaaaaa;letter-spacing:0.15em;text-transform:uppercase;">Your Exit Readiness Results</p>
+  </td></tr>
 
-                  <!-- Logo -->
-                  <tr>
-                    <td align="center" style="padding:32px 40px 16px;">
-                      <p style="margin:0;font-family:Georgia,serif;font-size:24px;font-weight:600;color:#f8f4ee;letter-spacing:0.08em;">
-                        Exit<span style="color:#c9a84c;">Vault</span>
-                      </p>
-                      <p style="margin:6px 0 0;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:#8a8580;">
-                        Your Exit Readiness Results
-                      </p>
-                    </td>
-                  </tr>
+  <tr><td style="background:#c9a84c;padding:12px 32px;">
+    <p style="margin:0;font-family:Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:#000000;">Your Quadrant: ${quadrantName}</p>
+  </td></tr>
 
-                  <!-- Greeting -->
-                  <tr>
-                    <td style="padding:16px 40px 0;">
-                      <p style="font-family:Georgia,serif;font-size:17px;font-weight:300;color:#f8f4ee;margin:0 0 12px;">
-                        ${firstName}, here are your results.
-                      </p>
-                      <p style="font-family:Georgia,serif;font-size:14px;font-weight:300;font-style:italic;color:#d4cfc8;line-height:1.7;margin:0 0 24px;">
-                        You completed the ExitVault Exit Readiness Assessment. What follows is an honest picture of where you stand — and what it means.
-                      </p>
-                    </td>
-                  </tr>
+  <tr><td style="padding:24px 32px;border-bottom:1px solid #eeeeee;">
+    <p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:16px;color:#222222;">Hello ${firstName},</p>
+    <p style="margin:0;font-family:Arial,sans-serif;font-size:14px;color:#444444;line-height:1.7;">${quadrantDescriptions[quadrant]}</p>
+  </td></tr>
 
-                  <!-- Quadrant -->
-                  <tr>
-                    <td style="padding:0 40px 24px;">
-                      <table width="100%" cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td style="background:rgba(201,168,76,0.08);border-left:3px solid #c9a84c;padding:20px 24px;">
-                            <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:#8a6f33;">Your Quadrant</p>
-                            <p style="margin:0 0 12px;font-family:Georgia,serif;font-size:24px;font-weight:300;color:#c9a84c;">${quadrantName}</p>
-                            <p style="margin:0;font-family:Georgia,serif;font-size:14px;font-weight:300;color:#d4cfc8;line-height:1.7;">
-                              ${quadrantDescriptions[quadrant]}
-                            </p>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
+  <tr><td style="padding:24px 32px;border-bottom:1px solid #eeeeee;">
+    <p style="margin:0 0 12px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#999999;">Your Scores</p>
+    <table width="100%" cellpadding="0" cellspacing="0">
+      <tr>
+        <td width="48%" style="background:#f5f5f5;border:1px solid #dddddd;padding:12px;text-align:center;">
+          <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;color:#999999;text-transform:uppercase;letter-spacing:0.1em;">Personal Readiness</p>
+          <p style="margin:0;font-family:Arial,sans-serif;font-size:28px;font-weight:700;color:#1b2a4a;">${personalScore}<span style="font-size:14px;color:#999999;">/15</span></p>
+        </td>
+        <td width="4%"></td>
+        <td width="48%" style="background:#f5f5f5;border:1px solid #dddddd;padding:12px;text-align:center;">
+          <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:10px;color:#999999;text-transform:uppercase;letter-spacing:0.1em;">Financial Readiness</p>
+          <p style="margin:0;font-family:Arial,sans-serif;font-size:28px;font-weight:700;color:#1b2a4a;">${financialScore}<span style="font-size:14px;color:#999999;">/15</span></p>
+        </td>
+      </tr>
+    </table>
+  </td></tr>
 
-                  <!-- Scores -->
-                  <tr>
-                    <td style="padding:0 40px 28px;">
-                      <table width="100%" cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td width="48%" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);padding:16px;text-align:center;">
-                            <p style="margin:0;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8a8580;">Personal Readiness</p>
-                            <p style="margin:8px 0 0;font-family:Georgia,serif;font-size:30px;font-weight:300;color:#c9a84c;">${personalScore}<span style="font-size:13px;color:#8a8580;"> / 15</span></p>
-                          </td>
-                          <td width="4%"></td>
-                          <td width="48%" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.15);padding:16px;text-align:center;">
-                            <p style="margin:0;font-family:Arial,sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8a8580;">Financial Readiness</p>
-                            <p style="margin:8px 0 0;font-family:Georgia,serif;font-size:30px;font-weight:300;color:#c9a84c;">${financialScore}<span style="font-size:13px;color:#8a8580;"> / 15</span></p>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
+  <tr><td style="padding:24px 32px;border-bottom:1px solid #eeeeee;background:#f9f9f9;">
+    <p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#999999;">Your Next Step</p>
+    <p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:14px;color:#333333;line-height:1.7;">
+      A no-obligation conversation with Thomas Addison — CEPA, CISSP, Duke MBA — to talk through what your results mean and what your real options look like. No pressure. Just clarity.
+    </p>
+    <p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:15px;font-weight:700;color:#222222;">
+      Schedule your free conversation:
+    </p>
+    <p style="margin:0 0 12px;font-family:Arial,sans-serif;font-size:15px;">
+      <a href="https://calendar.app.google/cYv64HLDdnt95R3W6" 
+         target="_blank"
+         style="color:#1b2a4a;font-weight:700;text-decoration:underline;">
+        https://calendar.app.google/cYv64HLDdnt95R3W6
+      </a>
+    </p>
+    <p style="margin:0;font-family:Arial,sans-serif;font-size:12px;color:#777777;">
+      Or simply reply to this email and I will be in touch.
+    </p>
+  </td></tr>
 
-                  <!-- Next step -->
-                  <tr>
-                    <td bgcolor="#ffffff" style="background-color:#ffffff;padding:28px 40px;border-top:3px solid #c9a84c;">
-                      <p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#8a6f33;">Your Next Step</p>
-                      <p style="margin:0 0 20px;font-family:Georgia,serif;font-size:14px;color:#333333;line-height:1.7;">
-                        A no-obligation conversation with Thomas Addison — CEPA, CISSP, Duke MBA — to talk through what your results mean and what your options look like. No pressure. Just clarity.
-                      </p>
-                      <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                        <tr>
-                          <td align="center" bgcolor="#c9a84c" style="background-color:#c9a84c;padding:18px 24px;">
-                            <a href="https://calendar.app.google/cYv64HLDdnt95R3W6"
-                               target="_blank"
-                               style="font-family:Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#000000;text-decoration:underline;display:block;">
-                              &rarr; &nbsp; Schedule a Free Conversation &nbsp; &larr;
-                            </a>
-                          </td>
-                        </tr>
-                      </table>
-                      <p style="margin:16px 0 0;font-family:Arial,sans-serif;font-size:12px;color:#333333;text-align:center;">
-                        Click the gold bar above or use this link:<br>
-                        <a href="https://calendar.app.google/cYv64HLDdnt95R3W6"
-                           target="_blank"
-                           style="color:#000000;font-weight:bold;word-break:break-all;text-decoration:underline;">
-                          https://calendar.app.google/cYv64HLDdnt95R3W6
-                        </a>
-                      </p>
-                    </td>
-                  </tr>
+  <tr><td style="padding:20px 32px;border-top:1px solid #dddddd;text-align:center;background:#f5f5f5;">
+    <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:12px;font-weight:700;color:#1b2a4a;">Thomas Addison &nbsp;·&nbsp; CEPA &nbsp;·&nbsp; CBEC &nbsp;·&nbsp; CISSP &nbsp;·&nbsp; Duke MBA</p>
+    <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:11px;color:#777777;">
+      <a href="https://exitvault.addisonsa.com" style="color:#1b2a4a;text-decoration:underline;">exitvault.addisonsa.com</a>
+      &nbsp;·&nbsp;
+      <a href="https://addisonsa.com" style="color:#1b2a4a;text-decoration:underline;">addisonsa.com</a>
+    </p>
+    <p style="margin:8px 0 0;font-family:Arial,sans-serif;font-size:10px;color:#aaaaaa;">
+      Addison Advisory &nbsp;·&nbsp; Virginia, USA<br>
+      You received this because you completed the ExitVault assessment.<br>
+      To unsubscribe reply with "unsubscribe" in the subject line.
+    </p>
+  </td></tr>
 
-                  <!-- Footer -->
-                  <tr>
-                    <td style="border-top:1px solid rgba(201,168,76,0.1);padding:20px 40px;text-align:center;">
-                      <p style="margin:0;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#8a8580;">
-                        Thomas Addison &nbsp;·&nbsp; CEPA &nbsp;·&nbsp; CBEC &nbsp;·&nbsp; CISSP &nbsp;·&nbsp; Duke MBA
-                      </p>
-                      <p style="margin:6px 0 0;font-family:Arial,sans-serif;font-size:10px;color:#8a8580;">
-                        <a href="https://exitvault.addisonsa.com" style="color:#c9a84c;text-decoration:none;">exitvault.addisonsa.com</a>
-                        &nbsp;·&nbsp;
-                        <a href="https://addisonsa.com" style="color:#c9a84c;text-decoration:none;">addisonsa.com</a>
-                        &nbsp;·&nbsp;
-                        <a href="mailto:thomas@addisonsa.com" style="color:#c9a84c;text-decoration:none;">thomas@addisonsa.com</a>
-                      </p>
-                      <p style="margin:10px 0 0;font-family:Arial,sans-serif;font-size:10px;color:#8a8580;">
-                        Addison Advisory &nbsp;·&nbsp; Virginia, USA<br>
-                        You received this because you completed the ExitVault assessment.<br>
-                        To unsubscribe reply with "unsubscribe" in the subject line.
-                      </p>
-                    </td>
-                  </tr>
-
-                </table>
-              </td>
-            </tr>
-          </table>
-        </body>
-        </html>
-      `
+</table>
+</td></tr>
+</table>
+</body></html>`
     });
 
-    // Clean up verified code
+        // Clean up verified code
     codeStore.delete(email.toLowerCase());
 
     res.json({ success: true, message: 'Results submitted and emails sent.' });
