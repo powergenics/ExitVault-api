@@ -311,10 +311,17 @@ app.post('/api/submit-results', async (req, res) => {
                   <!-- CTA -->
                   <tr>
                     <td style="padding:28px 40px;text-align:center;">
-                      <a href="https://calendar.app.google/cYv64HLDdnt95R3W6" 
-                         style="display:inline-block;background:#1b2a4a;color:#c9a84c;font-family:Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;padding:14px 32px;">
-                        Schedule Follow-Up Call
-                      </a>
+                      <table cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;">
+                        <tr>
+                          <td align="center" bgcolor="#1b2a4a" style="background-color:#1b2a4a;border-radius:2px;">
+                            <a href="https://calendar.app.google/cYv64HLDdnt95R3W6"
+                               target="_blank"
+                               style="display:inline-block;background-color:#1b2a4a;color:#c9a84c;font-family:Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;padding:16px 36px;border:2px solid #c9a84c;">
+                              Schedule Follow-Up Call
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
                       <p style="margin:16px 0 0;font-family:Arial,sans-serif;font-size:11px;color:#8a8580;">
                         Reply directly to this email to reach ${firstName} at ${email}
                       </p>
@@ -431,12 +438,15 @@ app.post('/api/submit-results', async (req, res) => {
                       <p style="margin:0 0 20px;font-family:Georgia,serif;font-size:14px;font-weight:300;color:#d4cfc8;line-height:1.7;">
                         A no-obligation conversation with Thomas Addison — CEPA, CISSP, Duke MBA — to talk through what your results mean and what your options look like. No pressure. Just clarity.
                       </p>
-                      <table cellpadding="0" cellspacing="0">
+                      <table cellpadding="0" cellspacing="0" border="0">
                         <tr>
-                          <td style="background:linear-gradient(135deg,#c9a84c,#e2c47a);">
+                          <td align="center" bgcolor="#c9a84c" style="background-color:#c9a84c;border-radius:2px;">
                             <a href="https://calendar.app.google/cYv64HLDdnt95R3W6"
-                               style="display:block;padding:14px 32px;font-family:Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;color:#0f1e35;text-decoration:none;">
+                               target="_blank"
+                               style="display:inline-block;background-color:#c9a84c;color:#0f1e35;font-family:Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;padding:16px 36px;border:2px solid #c9a84c;mso-padding-alt:0;mso-border-alt:0;">
+                              <!--[if mso]><i style="letter-spacing:36px;mso-font-width:-100%;mso-text-raise:30pt">&nbsp;</i><![endif]-->
                               Schedule a Free Conversation
+                              <!--[if mso]><i style="letter-spacing:36px;mso-font-width:-100%">&nbsp;</i><![endif]-->
                             </a>
                           </td>
                         </tr>
