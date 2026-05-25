@@ -64,9 +64,9 @@ app.post('/api/send-code', async (req, res) => {
     const resend = new Resend(RESEND_API_KEY);
 
     await resend.emails.send({
-      from: FROM_EMAIL,
+      from: `Thomas Addison <${FROM_EMAIL}>`,
       to: email,
-      subject: 'Your ExitVault Verification Code',
+      subject: 'Your ExitVault Verification Code — Action Required',
       html: `
         <!DOCTYPE html>
         <html>
@@ -222,7 +222,7 @@ app.post('/api/submit-results', async (req, res) => {
 
     // ── EMAIL 1: Lead notification to advisor ──
     await resend.emails.send({
-      from: FROM_EMAIL,
+      from: `Thomas Addison <${FROM_EMAIL}>`,
       to: ADVISOR_EMAIL,
       subject: `New ExitVault Lead — ${fullName} — ${quadrantName}`,
       html: `
@@ -311,17 +311,25 @@ app.post('/api/submit-results', async (req, res) => {
                   <!-- CTA -->
                   <tr>
                     <td style="padding:28px 40px;text-align:center;">
-                      <table cellpadding="0" cellspacing="0" border="0" style="margin:0 auto;">
+                      <table cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
-                          <td align="center" bgcolor="#1b2a4a" style="background-color:#1b2a4a;border-radius:2px;">
+                          <td align="center" bgcolor="#c9a84c" style="background-color:#c9a84c;padding:18px 24px;">
                             <a href="https://calendar.app.google/cYv64HLDdnt95R3W6"
                                target="_blank"
-                               style="display:inline-block;background-color:#1b2a4a;color:#c9a84c;font-family:Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;padding:16px 36px;border:2px solid #c9a84c;">
-                              Schedule Follow-Up Call
+                               style="font-family:Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#000000;text-decoration:underline;display:block;">
+                              &rarr; &nbsp; Schedule Follow-Up Call &nbsp; &larr;
                             </a>
                           </td>
                         </tr>
                       </table>
+                      <p style="margin:12px 0 0;font-family:Arial,sans-serif;font-size:12px;color:#ffffff;text-align:center;">
+                        Or use this link:<br>
+                        <a href="https://calendar.app.google/cYv64HLDdnt95R3W6"
+                           target="_blank"
+                           style="color:#c9a84c;font-weight:bold;word-break:break-all;text-decoration:underline;">
+                          https://calendar.app.google/cYv64HLDdnt95R3W6
+                        </a>
+                      </p>
                       <p style="margin:16px 0 0;font-family:Arial,sans-serif;font-size:11px;color:#8a8580;">
                         Reply directly to this email to reach ${firstName} at ${email}
                       </p>
@@ -354,7 +362,7 @@ app.post('/api/submit-results', async (req, res) => {
     };
 
     await resend.emails.send({
-      from: FROM_EMAIL,
+      from: `Thomas Addison <${FROM_EMAIL}>`,
       to: email,
       replyTo: ADVISOR_EMAIL,
       subject: `Your ExitVault Results — ${quadrantName}`,
@@ -433,24 +441,30 @@ app.post('/api/submit-results', async (req, res) => {
 
                   <!-- Next step -->
                   <tr>
-                    <td style="padding:0 40px 32px;">
-                      <p style="margin:0 0 16px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#8a6f33;">Your Next Step</p>
-                      <p style="margin:0 0 20px;font-family:Georgia,serif;font-size:14px;font-weight:300;color:#d4cfc8;line-height:1.7;">
+                    <td bgcolor="#ffffff" style="background-color:#ffffff;padding:28px 40px;border-top:3px solid #c9a84c;">
+                      <p style="margin:0 0 8px;font-family:Arial,sans-serif;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:#8a6f33;">Your Next Step</p>
+                      <p style="margin:0 0 20px;font-family:Georgia,serif;font-size:14px;color:#333333;line-height:1.7;">
                         A no-obligation conversation with Thomas Addison — CEPA, CISSP, Duke MBA — to talk through what your results mean and what your options look like. No pressure. Just clarity.
                       </p>
-                      <table cellpadding="0" cellspacing="0" border="0">
+                      <table cellpadding="0" cellspacing="0" border="0" width="100%">
                         <tr>
-                          <td align="center" bgcolor="#c9a84c" style="background-color:#c9a84c;border-radius:2px;">
+                          <td align="center" bgcolor="#c9a84c" style="background-color:#c9a84c;padding:18px 24px;">
                             <a href="https://calendar.app.google/cYv64HLDdnt95R3W6"
                                target="_blank"
-                               style="display:inline-block;background-color:#c9a84c;color:#0f1e35;font-family:Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;padding:16px 36px;border:2px solid #c9a84c;mso-padding-alt:0;mso-border-alt:0;">
-                              <!--[if mso]><i style="letter-spacing:36px;mso-font-width:-100%;mso-text-raise:30pt">&nbsp;</i><![endif]-->
-                              Schedule a Free Conversation
-                              <!--[if mso]><i style="letter-spacing:36px;mso-font-width:-100%">&nbsp;</i><![endif]-->
+                               style="font-family:Arial,sans-serif;font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#000000;text-decoration:underline;display:block;">
+                              &rarr; &nbsp; Schedule a Free Conversation &nbsp; &larr;
                             </a>
                           </td>
                         </tr>
                       </table>
+                      <p style="margin:16px 0 0;font-family:Arial,sans-serif;font-size:12px;color:#333333;text-align:center;">
+                        Click the gold bar above or use this link:<br>
+                        <a href="https://calendar.app.google/cYv64HLDdnt95R3W6"
+                           target="_blank"
+                           style="color:#000000;font-weight:bold;word-break:break-all;text-decoration:underline;">
+                          https://calendar.app.google/cYv64HLDdnt95R3W6
+                        </a>
+                      </p>
                     </td>
                   </tr>
 
@@ -468,6 +482,7 @@ app.post('/api/submit-results', async (req, res) => {
                         <a href="mailto:thomas@addisonsa.com" style="color:#c9a84c;text-decoration:none;">thomas@addisonsa.com</a>
                       </p>
                       <p style="margin:10px 0 0;font-family:Arial,sans-serif;font-size:10px;color:#8a8580;">
+                        Addison Advisory &nbsp;·&nbsp; Virginia, USA<br>
                         You received this because you completed the ExitVault assessment.<br>
                         To unsubscribe reply with "unsubscribe" in the subject line.
                       </p>
