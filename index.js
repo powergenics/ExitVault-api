@@ -3,7 +3,7 @@ const cors = require('cors');
 const { Resend } = require('resend');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const ADVISOR_EMAIL = process.env.ADVISOR_EMAIL || 'thomas@addisonsa.com';
 const FROM_EMAIL = process.env.FROM_EMAIL || 'noreply@exitvault.addisonsa.com';
