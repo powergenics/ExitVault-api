@@ -15,6 +15,8 @@ app.use(cors({
   origin: [
     'https://exitvault.addisonsa.com',
     'https://exitvault.app',
+    'https://addisonos.com',
+    'https://www.addisonos.com',
     'http://localhost:3000',
     'http://127.0.0.1:5500'
   ]
